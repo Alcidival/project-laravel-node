@@ -1,9 +1,9 @@
 <?php
+namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller {
     
@@ -11,7 +11,7 @@ class UserController extends Controller {
         return User::all();
     }
 
-    public function store(Request $request) {
+    public function post(Request $request) {
         $validated = $request->validate([
             'name'      => 'required|string',
             'email'     => 'required|email|unique:users',
@@ -23,7 +23,7 @@ class UserController extends Controller {
         return User::create($validated);
     }
 
-    public function show($id) {
+    public function get($id) {
         return User::findOrFail($id);
     }
 
@@ -44,8 +44,8 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function destroy($id) {
-        return User::destroy($id);
+    public function delete($id) {
+        return User::delete($id);
     }
 
-}
+} 
