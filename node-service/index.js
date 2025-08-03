@@ -1,13 +1,11 @@
 import express from 'express';
-import cors from 'cors';
 const app = express();
+const port = 3000;
 
-app.use(cors());
-
-app.get('/', (req, res) => {
-  res.send('Hello from Node.js service!');
+app.get('/api/endpoint', (req, res) => {
+  res.json({ message: 'Resposta do microserviço Node.js'});
 });
 
-app.listen(3000, () => {
-  console.log('Node.js service is running on port 3000');
+app.listen(port, () => {
+  console.log(`Microserviço rodando em http://localhost:${port}`);
 });

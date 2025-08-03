@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExternalServiceController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -18,8 +19,5 @@ Route::get('/health', function () {
     return response()->json(['status' => 'ok']);
 });
 
-Route::get('/external', function () {
-    $response = Http::get('https://localhost:3000/external');
-    return response()->json($response->json());
-});
+Route::get('/external', [ExternalServiceController::class, 'getExternalData']);
 
