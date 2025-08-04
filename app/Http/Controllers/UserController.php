@@ -22,7 +22,7 @@ class UserController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function post(Request $request) {
+    public function store(Request $request) {
         $validated = $request->validate([
             'name'      => 'required|string',
             'email'     => 'required|email|unique:users',

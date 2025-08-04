@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
 class ExternalServiceController extends Controller {
@@ -18,7 +16,7 @@ class ExternalServiceController extends Controller {
                 'success'   => true,
                 'data'      => $body
             ]);
-        } catch (\Exceptino $e) {
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Erro ao se comunicar com o microserviço',
